@@ -15,10 +15,15 @@ let package = Package(
         .target(
             name: "COnigmo",
             cSettings: [
-                .headerSearchPath("include/enc"),
-                .headerSearchPath("include/enc/jis"),
-                .headerSearchPath("include/enc/unicode"),
-                .headerSearchPath("include/win32"),
+                .headerSearchPath("src"),
+                .headerSearchPath("src/enc/jis"),
+                .headerSearchPath("src/enc/unicode"),
+            ]
+        ),
+        .testTarget(
+            name: "COnigmoTests",
+            dependencies: [
+                "COnigmo"
             ]
         )
     ]

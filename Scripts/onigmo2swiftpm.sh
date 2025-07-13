@@ -12,7 +12,7 @@ pushd "$SOURCE_DIR"
 ./configure
 popd
 
-EXCLUDE_FILE_PREFIXES=("test" "cp949" "emacs_mule" "gb2312" "us_ascii")
+EXCLUDE_FILE_PREFIXES=("test" "cp949" "emacs_mule" "gb2312" "us_ascii" "onigmognu" "onigmoposix" "reggnu" "regposix" "regposerr")
 EXCLUDE_DIR_NAMES=("test" "sample")
 
 should_exclude() {
@@ -50,6 +50,9 @@ move_files() {
 }
 
 move_files "h" "$OUTPUT_DIR/include"
+move_files "kwd" "$OUTPUT_DIR/include"
 move_files "c" "$OUTPUT_DIR/src"
+cp -r "$OUTPUT_DIR/include/enc" "$OUTPUT_DIR/src"
+rm -r "$OUTPUT_DIR/include/enc"
 
 echo "✅ done!"
